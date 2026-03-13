@@ -2,7 +2,7 @@
 services:
   db:
     container_name: db
-    image: dbimage
+    image: divyagorantla1708/mynewproject:dbimage
     ports:
       - "3306:3306"
     deploy:
@@ -10,7 +10,7 @@ services:
       
   auth_service:
     container_name: auth_service
-    image: authimage
+    image: divyagorantla1708/mynewproject:authimage
     ports:
       - "5001:5001"
     deploy:
@@ -19,7 +19,7 @@ services:
       - db
   book_service:
     container_name: book_service
-    image: bookimage
+    image: divyagorantla1708/mynewproject:bookimage
     ports:
       - "5002:5002"
     deploy:
@@ -28,7 +28,7 @@ services:
       - db
   borrow_service:
     container_name: borrow_service
-    image: borrowimage
+    image: divyagorantla1708/mynewproject:borrowimage
     ports:
       - "5003:5003"
     deploy:
@@ -37,7 +37,7 @@ services:
       - db
   frontend:
     container_name: frontend
-    image: frontendimage
+    image: divyagorantla1708/mynewproject:frontendimage
     ports:
       - "5000:5000"
     deploy:
