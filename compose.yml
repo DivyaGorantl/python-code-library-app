@@ -1,47 +1,43 @@
 ---
 services:
   db:
-    container_name: db
-    image: divyagorantla1708/mynewproject:dbimage
+    image: divyagorantla1708/libapp:dbimage
     ports:
       - "3306:3306"
     deploy:
-      replicas: 2
-      
+      replicas: 1    
   auth_service:
-    container_name: auth_service
-    image: divyagorantla1708/mynewproject:authimage
+    image: divyagorantla1708/libapp:authimage
     ports:
       - "5001:5001"
     deploy:
-      replicas: 2
+      replicas: 1
     depends_on:
       - db
   book_service:
-    container_name: book_service
-    image: divyagorantla1708/mynewproject:bookimage
+    image: divyagorantla1708/libapp:bookimage
     ports:
       - "5002:5002"
     deploy:
-      replicas: 2
+      replicas: 1
     depends_on:
       - db
   borrow_service:
     container_name: borrow_service
-    image: divyagorantla1708/mynewproject:borrowimage
+    image: divyagorantla1708/libapp:borrowimage
     ports:
       - "5003:5003"
     deploy:
       replicas: 1
     depends_on:
       - db
-  frontend:
+  app-service:
     container_name: frontend
-    image: divyagorantla1708/mynewproject:frontendimage
+    image: divyagorantla1708/libapp:appimage
     ports:
-      - "5000:5000"
+      - "5004:5004"
     deploy:
-      replicas: 2
+      replicas: 1
     depends_on:
       - auth_service
       - book_service
